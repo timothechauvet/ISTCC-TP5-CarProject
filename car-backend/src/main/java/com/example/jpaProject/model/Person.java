@@ -3,9 +3,15 @@ package com.example.jpaProject.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "PERSON")
 public class Person {
+	//Columns
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@Column(name = "NAME")
 	private String name;
+	@Column(name = "AGE")
 	private int age;
 
 	public Person() {
@@ -18,8 +24,6 @@ public class Person {
 		this.age 	= age;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
@@ -39,4 +43,8 @@ public class Person {
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", age=" + age + "]";
+	}
 }

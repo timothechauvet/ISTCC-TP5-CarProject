@@ -30,7 +30,7 @@ public class JpaProjectApplication {
 			log.info(date.toString());
 
 			Person michel 	= new Person("Michel", 12);
-			Car toyota		= new Car(2);
+			Car toyota		= new Car();
 			Rent toyota_mic	= new Rent(dateFormat.parse("2000-01-01"), dateFormat.parse("2020-01-01"));
 
 			toyota_mic.setPerson(michel);

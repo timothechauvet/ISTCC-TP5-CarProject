@@ -7,7 +7,7 @@ import java.util.Date;
 public class Rent {
 	private Date beginRent;
 	private Date endRent;
-	private Vehicule vehicule;
+	private Vehicle vehicle;
 	private Person person;
 
 	//ID
@@ -51,11 +51,11 @@ public class Rent {
 	}
 
 	@ManyToOne
-	public Vehicule getVehicule() {
-		return vehicule;
+	public Vehicle getVehicule() {
+		return vehicle;
 	}
-	public void setVehicule(Vehicule vehicule) {
-		this.vehicule = vehicule;
+	public void setVehicule(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 	@ManyToOne

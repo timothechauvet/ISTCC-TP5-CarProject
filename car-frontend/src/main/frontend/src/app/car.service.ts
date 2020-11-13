@@ -1,39 +1,57 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs'
 import { Car } from './car';
-
-export const CARS: Car[] = [
-  { id: 0, plateNumber: '11AA22', model: 'Ferrari', price: 1500, numberOfDays: 0, rented: false },
-  { id: 1, plateNumber: '22BB33', model: 'Porsche', price: 1200, numberOfDays: 0, rented: false },
-  { id: 2, plateNumber: '44CC55', model: 'Mac Laren', price: 1000, numberOfDays: 0, rented: false }
-];
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
+  private baseUrl = 'http://localhost:8080/api/cars';
 
-  cars: Car[] = CARS;
+  constructor(private http: HttpClient) { }
 
-  getCarsWithPromise(): Promise<Car[]> {
-    return Promise.resolve(this.cars);
+  getVehicle(id: number): Observable<Object> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+ 
+  createVehicle(Vehicle: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}` + `/create`, Vehicle);
+  }
+ 
+  updateVehicle(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}`, value);
+  }
+ 
+  deleteVehicle(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }
+ 
+  getVehiclesList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
   }
 
-  rent(car: Car){
-    const index = this.cars.findIndex(obj => obj.plateNumber === car.plateNumber);
-    console.warn(car.plateNumber);
-    if (index > -1 && car.rented == false) {
-      this.cars[index].rented = true;
-    }
-  }
+  // cars: Car[] = CARS;
 
-  //Append with a new car
-  give(car: Car){
-    const index = this.cars.findIndex(obj => obj.plateNumber === car.plateNumber);
-    console.warn(car.plateNumber);
-    if (index > -1 && car.rented == true) {
-      this.cars[index].rented = false;
-    }
-  }
+  // getCarsWithPromise(): Promise<Car[]> {
+  //   return Promise.resolve(this.cars);
+  // }
+
+  // rent(car: Car){
+  //   const index = this.cars.findIndex(obj => obj.plateNumber === car.plateNumber);
+  //   console.warn(car.plateNumber);
+  //   if (index > -1 && car.rented == false) {
+  //     this.cars[index].rented = true;
+  //   }
+  // }
+
+  // //Append with a new car
+  // give(car: Car){
+  //   const index = this.cars.findIndex(obj => obj.plateNumber === car.plateNumber);
+  //   console.warn(car.plateNumber);
+  //   if (index > -1 && car.rented == true) {
+  //     this.cars[index].rented = false;
+  //   }
+  // }
 
 }
