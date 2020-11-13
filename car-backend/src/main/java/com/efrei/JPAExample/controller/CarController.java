@@ -31,6 +31,7 @@ public class CarController {
 
     @PostMapping(value = "/cars/create")
     public Car postCar(@RequestBody Car car) {
+        car.message();
         return repository.save(new Car(car.getPlateNumber()));
     }
 

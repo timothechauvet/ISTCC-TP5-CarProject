@@ -31,6 +31,7 @@ export class CreateCarComponent implements OnInit {
  
   onSubmit() {
     this.submitted = true;
+    this.car.rented = false;
     this.save();
   }
 }
