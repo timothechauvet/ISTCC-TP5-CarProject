@@ -13,9 +13,8 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtime("com.h2database:h2")
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compile group: 'org.apache.activemq', name: 'activemq-core', version: '5.7.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -24,3 +23,4 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
