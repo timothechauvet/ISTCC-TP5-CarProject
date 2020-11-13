@@ -27,6 +27,17 @@ public class Car {
 	@Column(name = "rented")
 	private boolean rented;
 
+	// Constructor
+	public Car(String plateNumber) {
+		this.plateNumber = plateNumber;
+		this.rented = false;
+	}
+
+	public Car() {
+		this.plateNumber = "plateNumber";
+		this.rented = false;
+	}
+
 	//Getters and setters
 	public long getId() {
 		return id;

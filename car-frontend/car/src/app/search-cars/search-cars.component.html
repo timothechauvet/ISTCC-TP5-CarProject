@@ -1,0 +1,18 @@
+<h3>Find By Plate</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="plateNumber">Plate</label>
+      <input type="text" class="form-control" id="plateNumber" required [(ngModel)]="plateNumber" name="plateNumber">
+    </div>
+ 
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+<ul>
+  <li *ngFor="let car of cars">
+    <h4>{{car.id}} - {{car.plateNumber}} Rented ? {{car.Rented}}</h4>
+  </li>
+</ul>

@@ -1,0 +1,16 @@
+<div *ngIf="car">
+    <div>
+      <label>plateNumber: </label> {{car.plateNumber}}
+    </div>
+    <div>
+      <label>rented: </label> {{car.rented}}
+    </div>
+   
+    <span class="button is-small btn-primary" *ngIf='car.rented' (click)='updateRented(false)'>Give back</span>
+   
+    <span class="button is-small btn-primary" *ngIf='!car.rented' (click)='updateRented(true)'>Rent</span>
+   
+    <span class="button is-small btn-danger" (click)='deleteCar()'>Delete</span>
+   
+    <hr/>
+  </div>

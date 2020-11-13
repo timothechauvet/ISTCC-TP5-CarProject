@@ -1,0 +1,9 @@
+<h1>Cars</h1>
+ 
+<div *ngFor="let car of cars | async" style="width: 300px;">
+  <car-details [car]='car'></car-details>
+</div>
+ 
+<div>
+  <button type="button" class="button btn-danger" (click)='deleteCars()'>Delete All</button>
+</div>
