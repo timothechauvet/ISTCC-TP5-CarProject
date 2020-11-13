@@ -66,41 +66,4 @@ public class Car implements Serializable {
 	public String toString() {
 		return "Car [id=" + id + ", plateNumber=" + plateNumber + ", rented=" + rented + "]";
 	}
-
-	public void message() {
-		try{
-
-			ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextJMS.xml");
-			QueueConnectionFactory factory = (QueueConnectionFactory) applicationContext.getBean("connectionFactory");
-
-			Queue queue = (Queue) applicationContext.getBean("queue");
-
-			// Create a connection. See https://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html
-			QueueConnection queueConnection = factory.createQueueConnection();
-
-			// Open a session without transaction and acknowledge automatic
-			QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-
-			// Start the connection
-			queueConnection.start();
-
-			// Create a sender
-			QueueSender queueSender = queueSession.createSender(queue);
-
-			// Create a message
-			ObjectMessage objectMessage = queueSession.createObjectMessage(this);
-
-			// Send the message
-			queueSender.send(objectMessage);
-
-			// Close the session
-			queueSender.close();
-
-			// Close the connection
-			queueConnection.close();
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
 }
