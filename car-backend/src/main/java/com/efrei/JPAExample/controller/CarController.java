@@ -1,6 +1,6 @@
 package com.efrei.JPAExample.controller;
 
-import com.efrei.JPAExample.Car;
+import com.efrei.JPAExample.model.Car;
 import com.efrei.JPAExample.repo.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
